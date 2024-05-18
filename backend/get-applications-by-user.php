@@ -11,7 +11,7 @@ try{
     $stmt = $db->prepare(
         'SELECT * FROM applications
         WHERE user_id=:userId
-        ORDER BY requested_amount DESC'
+        ORDER BY application_status DESC, name ASC, requested_amount DESC'
         );
     $stmt->bindValue(':userId', $userId);
     $stmt->execute();

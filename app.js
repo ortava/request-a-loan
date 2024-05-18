@@ -14,7 +14,7 @@ const applicationAdminDivTemplate = `
         <div id="status">{{status}}</div>
         <div>
             <button onClick="changeApplicationStatus(this.parentNode.parentNode.id, 'Approved')">Approve</button>
-            <button onClick="changeApplicationStatus(this.parentNode.parentNode.id, 'Denied')">Denied</button>
+            <button onClick="changeApplicationStatus(this.parentNode.parentNode.id, 'Denied')">Deny</button>
         </div>
     </div>
 `
