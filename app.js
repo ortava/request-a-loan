@@ -38,4 +38,3 @@ async function getApplications(){
         document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
     }
 }
-getApplications();

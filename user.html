@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Request a Loan: User View</title>
+</head>
+<body>
+
+    <form id="form" onsubmit="addApplication(); return false">
+        <input name="name" type="text" placeholder="Name">
+        <input name="amount" type="text" placeholder="Amount">
+        <button>Submit Application</button>
+    </form>
+
+    <div id="applications">
+        <div class="application">
+            <div>Name:</div>
+            <div>Requested Amount:</div>
+            <div>Status:</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>getApplications()</script>
+
+</body>
+</html>

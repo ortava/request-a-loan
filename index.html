@@ -8,21 +8,29 @@
 </head>
 <body>
 
-    <form id="form" onsubmit="addApplication(); return false">
-        <input name="name" type="text" placeholder="Name">
-        <input name="amount" type="text" placeholder="Amount">
-        <button>Submit Application</button>
-    </form>
+    <h3>Please use the appropriate URL parameters.</h3>
+    <body style="color:whitesmoke;">
+        Add the following to the end of your URL:
+        <br/>
+        "?user_type=admin"
+        <br/>
+        or
+        <br/>
+        "?user_type=user&user_id=?" and replace the "?" with a number greater than 0.
 
-    <div id="applications">
-        <div class="application">
-            <div>Name:</div>
-            <div>Requested Amount:</div>
-            <div>Status:</div>
-        </div>
-    </div>
+    </body>
 
-    <script src="app.js"></script>
+    <script>
+        let params = new URLSearchParams(document.location.search);
+        
+        if(params.get("user_type") === "admin"){
+            // Redirect to admin view.
+            window.location.href = "admin.html";
+        } else if(params.get("user_type") === "user"){
+            // Redirect to user view.
+            window.location.href = "user.html?user_id=" + params.get("user_id");
+        }
+    </script>
     
 </body>
 </html>
