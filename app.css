@@ -3,9 +3,12 @@
     padding: 0px;
     box-sizing: border-box;
 }
+h1{
+    color: whitesmoke;
+}
 body{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     padding: 10px;
     background-color: rgb(41, 41, 41);
 }
@@ -31,4 +34,14 @@ form button{
     display: grid;
     margin-top: 10px;
     grid-template-columns: 1fr 1fr 1fr;
+}
+#applications-admin{
+    width: 100%;
+    margin: 5px;
+    background-color: whitesmoke;
+}
+.application-admin{
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: 2fr 1fr 15% 25%;
 }

@@ -1,11 +1,29 @@
-// HTML template for application elements.
-const applicationDivTemplate = `
+// HTML template for application elements that the user will see.
+const applicationUserDivTemplate = `
     <div class="application">
         <div>{{name}}</div>
         <div>{{amount}}</div>
         <div>{{status}}</div>
     </div>
 `
+// HTML template for application elements that the admin will see.
+const applicationAdminDivTemplate = `
+    <div class="application-admin" id={{application_id}}>
+        <div>{{name}}</div>
+        <div>{{amount}}</div>
+        <div>{{status}}</div>
+        <div id="ayo">
+            <button onClick="changeApplicationStatus(this.parentNode.parentNode.id, 'Approved')">Approve</button>
+            <button onClick="changeApplicationStatus(this.parentNode.parentNode.id, 'Declined')">Decline</button>
+        </div>
+    </div>
+`
+
+// Changes the status of a given application if it has not already been approved/denied.
+async function changeApplicationStatus(applicationId, newStatus){
+    console.log(applicationId);
+    console.log(newStatus);
+}
 
 // Uses php to insert application form data into the database
 // and uses that data to place a new HTML element in the applications list
@@ -21,7 +39,7 @@ async function addApplication(){
     });
     json = await data.json();    
     
-    let applicationDiv = applicationDivTemplate;
+    let applicationDiv = applicationUserDivTemplate;
     applicationDiv = applicationDiv.replace('{{name}}', json.name);
     applicationDiv = applicationDiv.replace('{{amount}}', json.amount); 
     applicationDiv = applicationDiv.replace('{{status}}', "Under Review"); 
@@ -35,12 +53,13 @@ async function getApplications(){
     jsonArray = await data.json();
 
     for(let i = 0; i < jsonArray.length; i++){
-        let applicationDiv = applicationDivTemplate;
+        let applicationDiv = applicationAdminDivTemplate;
+        applicationDiv = applicationDiv.replace('{{application_id}}', jsonArray[i].application_id);
         applicationDiv = applicationDiv.replace('{{name}}', jsonArray[i].name);
         applicationDiv = applicationDiv.replace('{{amount}}', jsonArray[i].requested_amount); 
         applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].approval_status); 
 
-        document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
+        document.querySelector('#applications-admin').insertAdjacentHTML('beforeend', applicationDiv);
     }
 }
 
@@ -53,7 +72,7 @@ async function getApplicationsByUser(){
     jsonArray = await data.json();
 
     for(let i = 0; i < jsonArray.length; i++){
-        let applicationDiv = applicationDivTemplate;
+        let applicationDiv = applicationUserDivTemplate;
         applicationDiv = applicationDiv.replace('{{name}}', jsonArray[i].name);
         applicationDiv = applicationDiv.replace('{{amount}}', jsonArray[i].requested_amount); 
         applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].approval_status); 
