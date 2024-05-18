@@ -24,3 +24,18 @@ async function addApplication(){
     document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
 }
 
+// Populates the applications list with all existing applications (from the database)
+async function getApplications(){
+    let data = await fetch('backend/get-applications.php');
+    jsonArray = await data.json();
+
+    for(let i = 0; i < jsonArray.length; i++){
+        let applicationDiv = applicationDivTemplate;
+        applicationDiv = applicationDiv.replace('{{name}}', jsonArray[i].name);
+        applicationDiv = applicationDiv.replace('{{amount}}', jsonArray[i].requested_amount); 
+        applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].approval_status); 
+
+        document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
+    }
+}
+getApplications();
