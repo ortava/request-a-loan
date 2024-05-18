@@ -11,8 +11,8 @@ const applicationAdminDivTemplate = `
     <div class="application-admin" id={{application_id}}>
         <div>{{name}}</div>
         <div>{{amount}}</div>
-        <div>{{status}}</div>
-        <div id="ayo">
+        <div id="status">{{status}}</div>
+        <div>
             <button onClick="changeApplicationStatus(this.parentNode.parentNode.id, 'Approved')">Approve</button>
             <button onClick="changeApplicationStatus(this.parentNode.parentNode.id, 'Denied')">Denied</button>
         </div>
@@ -21,8 +21,12 @@ const applicationAdminDivTemplate = `
 
 // Changes the status of a given application if it has not already been approved/denied.
 async function changeApplicationStatus(applicationId, newStatus){
-    console.log(applicationId);
-    console.log(newStatus);
+    if(document.getElementById(applicationId).querySelector('#status').textContent === "Under Review"){
+        let data = await fetch('backend/update-application-status.php' + '?application_id=' + applicationId + "&new_status=" + newStatus);
+        json = await data.json();
+
+        document.getElementById(applicationId).querySelector('#status').textContent = json.new_status;
+    }
 }
 
 // Uses php to insert application form data into the database
@@ -37,7 +41,7 @@ async function addApplication(){
         method: "POST",
         body: formData
     });
-    json = await data.json();    
+    json = await data.json();
     
     let applicationDiv = applicationUserDivTemplate;
     applicationDiv = applicationDiv.replace('{{name}}', json.name);
@@ -57,7 +61,7 @@ async function getApplications(){
         applicationDiv = applicationDiv.replace('{{application_id}}', jsonArray[i].application_id);
         applicationDiv = applicationDiv.replace('{{name}}', jsonArray[i].name);
         applicationDiv = applicationDiv.replace('{{amount}}', jsonArray[i].requested_amount); 
-        applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].approval_status); 
+        applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].application_status); 
 
         document.querySelector('#applications-admin').insertAdjacentHTML('beforeend', applicationDiv);
     }
@@ -75,7 +79,7 @@ async function getApplicationsByUser(){
         let applicationDiv = applicationUserDivTemplate;
         applicationDiv = applicationDiv.replace('{{name}}', jsonArray[i].name);
         applicationDiv = applicationDiv.replace('{{amount}}', jsonArray[i].requested_amount); 
-        applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].approval_status); 
+        applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].application_status); 
 
         document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
     }
