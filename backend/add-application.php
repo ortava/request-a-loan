@@ -1,5 +1,6 @@
 <?php
 
+$userId = $_POST['user_id'];
 $name = $_POST['name'];
 $amount = $_POST['amount'];
 
@@ -8,8 +9,11 @@ try{
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     
-    $stmt = $db->prepare('INSERT INTO applications(user_id, name, requested_amount) VALUES(:userId, :name, :amount)');
-    $stmt->bindValue(':userId', 1); // TODO: Get user_id from URL Param
+    $stmt = $db->prepare(
+        'INSERT INTO applications(user_id, name, requested_amount)
+         VALUES(:userId, :name, :amount)'
+         );
+    $stmt->bindValue(':userId', $userId);
     $stmt->bindValue(':name', $name);
     $stmt->bindValue(':amount', $amount);
     $stmt->execute();

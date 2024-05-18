@@ -10,9 +10,14 @@ const applicationDivTemplate = `
 // Uses php to insert application form data into the database
 // and uses that data to place a new HTML element in the applications list
 async function addApplication(){
+    // Add user_id from URL parameter to form data.
+    const formData = new FormData(document.getElementById('form'));
+    let params = new URLSearchParams(document.location.search);
+    formData.set('user_id', params.get("user_id"));
+
     let data = await fetch('backend/add-application.php', {
         method: "POST",
-        body: new FormData(document.getElementById('form'))
+        body: formData
     });
     json = await data.json();    
     
