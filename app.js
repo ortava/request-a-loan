@@ -43,3 +43,21 @@ async function getApplications(){
         document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
     }
 }
+
+// Populates the applications list with all existing applications (from the database)
+// from a particular user (as determined by URL parameters).
+async function getApplicationsByUser(){
+    let params = new URLSearchParams(document.location.search);
+
+    let data = await fetch('backend/get-applications-by-user.php' + '?user_id=' + params.get('user_id'));
+    jsonArray = await data.json();
+
+    for(let i = 0; i < jsonArray.length; i++){
+        let applicationDiv = applicationDivTemplate;
+        applicationDiv = applicationDiv.replace('{{name}}', jsonArray[i].name);
+        applicationDiv = applicationDiv.replace('{{amount}}', jsonArray[i].requested_amount); 
+        applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].approval_status); 
+
+        document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
+    }
+}
