@@ -29,7 +29,7 @@ async function getApplications(){
 
 // Changes the status of a given application if it has not already been approved/denied.
 async function changeApplicationStatus(applicationId, newStatus){
-    if(document.getElementById(applicationId).querySelector('#status').textContent === "Under Review"){
+    if(document.getElementById(applicationId).querySelector('#status').textContent === "Waiting Decision"){
         let data = await fetch('../../backend/api/update-application-status.php' + '?application_id=' + applicationId + "&new_status=" + newStatus);
         json = await data.json();
 

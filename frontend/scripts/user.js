@@ -21,7 +21,7 @@ async function addApplication(){
     });
     json = await data.json();
     
-    let applicationDiv = buildApplicationDiv(json.name, json.amount, "Under Review");
+    let applicationDiv = buildApplicationDiv(json.name, json.amount, "Waiting Decision");
     document.querySelector('#applications').insertAdjacentHTML('afterbegin', applicationDiv);
 }
 

@@ -12,7 +12,7 @@ try{
         'UPDATE applications
         SET application_status=:newStatus
         WHERE application_id=:applicationId
-        AND application_status == "Under Review"'
+        AND application_status == "Waiting Decision"'
         );
     $stmt->bindValue(':applicationId', $applicationId);
     $stmt->bindValue(':newStatus', $newStatus);
