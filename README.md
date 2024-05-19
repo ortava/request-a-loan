@@ -1,6 +1,8 @@
 # cds-case-study
 #### By Ryan Tavares
 ___
+##### Video Demonstration: [via Loom](https://www.loom.com/share/b7eec2730c5d44909b3e9dbbd392d0cc?sid=6038648a-ec50-4a01-acc2-e78112ff356c)
+___
 
 Hello! Welcome to the project I developed for the CDS technical interview.
 
