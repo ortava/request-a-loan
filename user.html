@@ -13,9 +13,9 @@
     <form id="form" onsubmit="addApplication(); return false">
         <h3>Application Form</h3>
         <label class="form-label" for="name">Full Name:</label>
-        <input name="name" type="text" placeholder="Full Name">
-        <label class="form-label" for="amount">Requested Amount:</label>
-        <input name="amount" type="text" placeholder="Requested Amount">
+        <input id="name" name="name" type="text" placeholder="Full Name">
+        <label class="form-label" for="amount">Requested Amount ($):</label>
+        <input id="amount" name="amount" type="number" placeholder="Requested Amount" inputmode="numeric">
         <button>Submit Application</button>
     </form>
 

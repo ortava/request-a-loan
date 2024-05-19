@@ -83,7 +83,7 @@ form button{
 /*Admin*/
 #applications-admin-header, .application-admin{
     display: grid;
-    grid-template-columns: 40% 20% 15% 25%;
+    grid-template-columns: 35% 25% 20% 20%;
 }
 #applications-admin-header{
     color: whitesmoke;
@@ -106,6 +106,7 @@ form button{
 }
 .application-admin > div{
     word-wrap: break-word;
+    margin: 3px;
     padding-left: 2px;
     padding-right: 2px;
 }
@@ -113,5 +114,4 @@ form button{
     width: 40%;
     min-width: fit-content;
     padding: 3px;
-    margin: 3px;
 }

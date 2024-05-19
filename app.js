@@ -2,7 +2,7 @@
 const applicationUserDivTemplate = `
     <div class="application">
         <div>{{name}}</div>
-        <div>{{amount}}</div>
+        <div>\$\{{amount}}</div>
         <div>{{status}}</div>
     </div>
 `
@@ -10,7 +10,7 @@ const applicationUserDivTemplate = `
 const applicationAdminDivTemplate = `
     <div class="application-admin" id={{application_id}}>
         <div>{{name}}</div>
-        <div>{{amount}}</div>
+        <div>\$\{{amount}}</div>
         <div id="status">{{status}}</div>
         <div>
             <button class="status-button" onClick="changeApplicationStatus(this.parentNode.parentNode.id, 'Approved')">Approve</button>
