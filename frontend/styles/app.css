@@ -6,6 +6,7 @@
 }
 h1{
     color: whitesmoke;
+    width: fit-content;
     margin: 20px;
 }
 h3{
