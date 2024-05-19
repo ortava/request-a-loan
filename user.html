@@ -8,18 +8,25 @@
 </head>
 <body>
 
+    <h1>Request a Loan: User View</h1>
+
     <form id="form" onsubmit="addApplication(); return false">
-        <input name="name" type="text" placeholder="Name">
-        <input name="amount" type="text" placeholder="Amount">
+        <h3>Application Form</h3>
+        <label class="form-label" for="name">Full Name:</label>
+        <input name="name" type="text" placeholder="Full Name">
+        <label class="form-label" for="amount">Requested Amount:</label>
+        <input name="amount" type="text" placeholder="Requested Amount">
         <button>Submit Application</button>
     </form>
 
-    <div id="applications">
-        <div class="application">
+    <div id="applications-container">
+        <h3>Previous Applications</h3>
+        <div id="applications-header">
             <div>Name:</div>
             <div>Requested Amount:</div>
             <div>Status:</div>
         </div>
+        <div id="applications"></div>
     </div>
 
     <script src="app.js"></script>

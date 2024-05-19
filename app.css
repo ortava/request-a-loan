@@ -1,47 +1,86 @@
 *{
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 h1{
     color: whitesmoke;
+    margin: 20px;
+}
+h3{
+    color: whitesmoke;
+    margin: 10px;
+    padding: 5px;
 }
 body{
+    background-color: rgb(41, 41, 41);
     width: 100%;
     height: 100%;
     padding: 10px;
-    background-color: rgb(41, 41, 41);
+    overflow-y: hidden;
 }
 form{
-    display: grid;
+    background-color: rgb(109, 108, 108);
     width: 40%;
+    margin: 20px;
+    display: grid;
     grid-template-rows: auto;
     row-gap: 2px;
 }
+.form-label{
+    color: whitesmoke;
+    padding: 5px;
+    margin-left: 10px;
+}
 form input{
     padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 form button{
-    width: 50%;
+    width: 200px;
     padding: 10px;
+    margin: 10px;
+}
+#applications-container{
+    background-color: rgb(109, 108, 108);
+    width: 70%;
+    margin: 20px;
+    display: grid;
+    grid-template-rows: auto;
+}
+#applications-header{
+    color: whitesmoke;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 45% 35% 20%;
 }
 #applications{
-    width: 60%;
-    margin: 5px;
-    background-color: whitesmoke;
+    width: 100%;
+    height: 50vh;
+    overflow-y: auto;
 }
 .application{
+    background-color: whitesmoke;
+    padding: 10px;
     display: grid;
-    margin-top: 10px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 45% 35% 20%;
+    border-style: solid;
+    border-color:black;
+    border-width: 2px;
+    border-left: 0;
+    border-right: 0;
 }
+
 #applications-admin{
+    background-color: whitesmoke;
     width: 100%;
     margin: 5px;
-    background-color: whitesmoke;
 }
 .application-admin{
-    display: grid;
     margin-top: 10px;
+    display: grid;
     grid-template-columns: 2fr 1fr 15% 25%;
 }
