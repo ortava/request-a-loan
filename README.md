@@ -26,7 +26,8 @@ Note: I was unable to deploy this application on a public web hosting service in
 You are now running the web application. Yay!
 
 ## Using the application:
-From the homepage, you will have the option to go to either the user's view or the admin's view. Just select which options you'd like and press the "Go" button.
+- From the homepage, you will have the option to go to either the user's view or the admin's view. Just select which options you'd like, and press the "Go" button.
+- You can press the title header at the top of each view to go back to the home page when you want to switch users or switch to admin.
 
 ___
 #### Thank you for using my application!
