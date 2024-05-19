@@ -46,41 +46,72 @@ form button{
 }
 #applications-container{
     background-color: rgb(109, 108, 108);
-    width: 70%;
+    width: 50%;
+    height: 50vh;
     margin: 20px;
     display: grid;
     grid-template-rows: auto;
 }
-#applications-header{
-    color: whitesmoke;
-    padding: 10px;
+#applications-header, .application{
     display: grid;
     grid-template-columns: 45% 35% 20%;
 }
+#applications-header{
+    color: whitesmoke;
+    padding: 10px;
+}
 #applications{
     width: 100%;
-    height: 50vh;
     overflow-y: auto;
 }
 .application{
     background-color: whitesmoke;
     padding: 10px;
-    display: grid;
-    grid-template-columns: 45% 35% 20%;
+
     border-style: solid;
     border-color:black;
     border-width: 2px;
     border-left: 0;
     border-right: 0;
 }
+.application > div{
+    word-wrap: break-word;
+    padding-left: 2px;
+    padding-right: 2px;
+}
 
+/*Admin*/
+#applications-admin-header, .application-admin{
+    display: grid;
+    grid-template-columns: 40% 20% 15% 25%;
+}
+#applications-admin-header{
+    color: whitesmoke;
+    padding: 10px;
+}
 #applications-admin{
     background-color: whitesmoke;
     width: 100%;
-    margin: 5px;
+    overflow-y: auto;
 }
 .application-admin{
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: 2fr 1fr 15% 25%;
+    background-color: whitesmoke;
+    padding: 10px;
+
+    border-style: solid;
+    border-color:black;
+    border-width: 2px;
+    border-left: 0;
+    border-right: 0;
+}
+.application-admin > div{
+    word-wrap: break-word;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.status-button{
+    width: 40%;
+    min-width: fit-content;
+    padding: 3px;
+    margin: 3px;
 }
