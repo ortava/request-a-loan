@@ -1,4 +1,6 @@
 # cds-case-study
+#### By Ryan Tavares
+___
 
 Hello! Welcome to the project I developed for the CDS technical interview.
 
@@ -14,7 +16,8 @@ Note: I was unable to deploy this application on a public web hosting service in
 - ##### Step 3: Click the "Explorer" or equivalent file browser button on the control panel.
 - ##### Step 4: Move this cds-case-study repository into XAMPP's "htdocs" folder.
   - You can download this repository by pressing the green "<> Code" button and clicking "Download ZIP".
-  - Extract the ZIP and move the extracted folder into XAMPP's "htdocs" folder.
+  - Extract the ZIP and move the extracted folder into XAMPP's "htdocs" folder
+    - Make sure there is no folder of the same name when you open it.
   - Rename the extracted folder "cds-case-study".
 - ##### Step 5: Start your local server
   - Go back to XAMPP's Control Panel.
