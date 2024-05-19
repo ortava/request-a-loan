@@ -15,7 +15,7 @@ async function addApplication(){
     let params = new URLSearchParams(document.location.search);
     formData.set('user_id', params.get("user_id"));
 
-    let data = await fetch('../backend/add-application.php', {
+    let data = await fetch('../../backend/add-application.php', {
         method: "POST",
         body: formData
     });
@@ -34,7 +34,7 @@ async function addApplication(){
 async function getApplicationsByUser(){
     let params = new URLSearchParams(document.location.search);
 
-    let data = await fetch('../backend/get-applications-by-user.php' + '?user_id=' + params.get('user_id'));
+    let data = await fetch('../../backend/get-applications-by-user.php' + '?user_id=' + params.get('user_id'));
     jsonArray = await data.json();
 
     for(let i = 0; i < jsonArray.length; i++){

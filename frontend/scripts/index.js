@@ -1,9 +1,9 @@
 // Redirect to appropriate view based on user_type and user_id values on this page.
 function buttonRedirect(){
     if(document.getElementById('admin').checked){
-        window.location.href = "./pages/admin.html";
+        window.location.href = "./frontend/pages/admin.html";
     } else if(document.getElementById('user').checked){
-        window.location.href = "./pages/user.html?user_id=" + document.getElementById('user_id').value;
+        window.location.href = "./frontend/pages/user.html?user_id=" + document.getElementById('user_id').value;
     }
 }
 
@@ -12,9 +12,9 @@ function parameterRedirect(){
     let params = new URLSearchParams(document.location.search);
     
     if(params.get("user_type") === "admin"){
-        window.location.href = "./pages/admin.html";
+        window.location.href = "./frontend/pages/admin.html";
     } else if(params.get("user_type") === "user"){
-        window.location.href = "./pages/user.html?user_id=" + params.get("user_id");
+        window.location.href = "./frontend/pages/user.html?user_id=" + params.get("user_id");
     }
 }
 
