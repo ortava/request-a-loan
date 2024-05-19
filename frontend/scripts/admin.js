@@ -13,7 +13,7 @@ const applicationAdminDivTemplate = `
 
 // Populates the applications list with all existing applications (from the database)
 async function getApplications(){
-    let data = await fetch('../../backend/get-applications.php');
+    let data = await fetch('../../backend/api/get-applications.php');
     jsonArray = await data.json();
 
     for(let i = 0; i < jsonArray.length; i++){
@@ -30,7 +30,7 @@ async function getApplications(){
 // Changes the status of a given application if it has not already been approved/denied.
 async function changeApplicationStatus(applicationId, newStatus){
     if(document.getElementById(applicationId).querySelector('#status').textContent === "Under Review"){
-        let data = await fetch('../../backend/update-application-status.php' + '?application_id=' + applicationId + "&new_status=" + newStatus);
+        let data = await fetch('../../backend/api/update-application-status.php' + '?application_id=' + applicationId + "&new_status=" + newStatus);
         json = await data.json();
 
         document.getElementById(applicationId).querySelector('#status').textContent = json.new_status;

@@ -5,7 +5,7 @@ $name = $_POST['name'];
 $amount = $_POST['amount'];
 
 try{
-    $db = new PDO('sqlite:db/government.db');
+    $db = new PDO('sqlite:../db/government.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     

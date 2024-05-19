@@ -15,17 +15,13 @@ async function addApplication(){
     let params = new URLSearchParams(document.location.search);
     formData.set('user_id', params.get("user_id"));
 
-    let data = await fetch('../../backend/add-application.php', {
+    let data = await fetch('../../backend/api/add-application.php', {
         method: "POST",
         body: formData
     });
     json = await data.json();
     
-    let applicationDiv = applicationUserDivTemplate;
-    applicationDiv = applicationDiv.replace('{{name}}', json.name);
-    applicationDiv = applicationDiv.replace('{{amount}}', json.amount); 
-    applicationDiv = applicationDiv.replace('{{status}}', "Under Review"); 
-
+    let applicationDiv = buildApplicationDiv(json.name, json.amount, "Under Review");
     document.querySelector('#applications').insertAdjacentHTML('afterbegin', applicationDiv);
 }
 
@@ -34,15 +30,20 @@ async function addApplication(){
 async function getApplicationsByUser(){
     let params = new URLSearchParams(document.location.search);
 
-    let data = await fetch('../../backend/get-applications-by-user.php' + '?user_id=' + params.get('user_id'));
+    let data = await fetch('../../backend/api/get-applications-by-user.php' + '?user_id=' + params.get('user_id'));
     jsonArray = await data.json();
 
     for(let i = 0; i < jsonArray.length; i++){
-        let applicationDiv = applicationUserDivTemplate;
-        applicationDiv = applicationDiv.replace('{{name}}', jsonArray[i].name);
-        applicationDiv = applicationDiv.replace('{{amount}}', jsonArray[i].requested_amount); 
-        applicationDiv = applicationDiv.replace('{{status}}', jsonArray[i].application_status); 
-
+        let applicationDiv = buildApplicationDiv(jsonArray[i].name, jsonArray[i].requested_amount, jsonArray[i].application_status);
         document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
     }
+}
+
+// Helps build application divs.
+function buildApplicationDiv(name, amount, status){
+    let applicationDiv = applicationUserDivTemplate;
+    applicationDiv = applicationDiv.replace('{{name}}', name);
+    applicationDiv = applicationDiv.replace('{{amount}}', amount); 
+    applicationDiv = applicationDiv.replace('{{status}}', status); 
+    return applicationDiv;
 }

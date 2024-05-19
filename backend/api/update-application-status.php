@@ -4,7 +4,7 @@ $applicationId = $_GET['application_id'];
 $newStatus = $_GET['new_status'];
 
 try{
-    $db = new PDO('sqlite:db/government.db');
+    $db = new PDO('sqlite:../db/government.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     
@@ -18,7 +18,6 @@ try{
     $stmt->bindValue(':newStatus', $newStatus);
     $stmt->execute();
 
-    //TODO: Echo the actual status of the application (in case there was an attempt to change the status of an approved/denied application).
     echo '{"application_id":"'.$applicationId.'", "new_status":"'.$newStatus.'"}';
 }catch(PDOException $ex){
     echo $ex->getMessage();
