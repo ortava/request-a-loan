@@ -48,7 +48,7 @@ async function addApplication(){
     applicationDiv = applicationDiv.replace('{{amount}}', json.amount); 
     applicationDiv = applicationDiv.replace('{{status}}', "Under Review"); 
 
-    document.querySelector('#applications').insertAdjacentHTML('beforeend', applicationDiv);
+    document.querySelector('#applications').insertAdjacentHTML('afterbegin', applicationDiv);
 }
 
 // Populates the applications list with all existing applications (from the database)
