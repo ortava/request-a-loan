@@ -49,8 +49,7 @@ form button{
     width: 50%;
     height: 50vh;
     margin: 20px;
-    display: grid;
-    grid-template-rows: auto;
+    padding-top: 2px;
 }
 #applications-header, .application{
     display: grid;
@@ -62,6 +61,7 @@ form button{
 }
 #applications{
     width: 100%;
+    height: 100%;
     overflow-y: auto;
 }
 .application{
@@ -92,6 +92,7 @@ form button{
 #applications-admin{
     background-color: whitesmoke;
     width: 100%;
+    height: 100%;
     overflow-y: auto;
 }
 .application-admin{
