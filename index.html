@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="./styles/app.css">
     <title>Request a Loan</title>
 </head>
 <body style="color:whitesmoke">
 
-    <input type="radio" id="admin" name="user_type" value="admin" onchange="onUserTypeChanged()">
-    <label for="admin">Admin</label>
-    <br/><br/>
-    <input type="radio" id="user" name="user_type" value="user" checked="true" onchange="onUserTypeChanged()">
-    <label for="user">User</label>
-    <br/><br/>
-    <label for="user_id">User ID: </label>
-    <input type="number" id="user_id" name="user_id" value="0" min="0" oninput="this.value = Math.abs(this.value)">
+    <h1>Request a Loan</h1>
 
-    <br/><br/>
-    <button id="btn_redirect" onclick="buttonRedirect()" style="padding:8px; width:50px">Go</button>
+    <div id="div_params" style="margin:20px;">
+        <input type="radio" id="admin" name="user_type" value="admin" onchange="onUserTypeChanged()">
+        <label for="admin">Admin</label>
+        <br/>
+        <br/>
+        <input type="radio" id="user" name="user_type" value="user" checked="true" onchange="onUserTypeChanged()">
+        <label for="user">User</label>
+        <br/>
+        <br/>
+        <label for="user_id">User ID: </label>
+        <input type="number" id="user_id" name="user_id" value="0" min="0" oninput="this.value = Math.abs(this.value)">
+        <br/>
+        <br/>
+        <button id="btn_redirect" onclick="buttonRedirect()" style="padding:8px; width:50px">Go</button>
+    </div>
 
-    <script>
-        function onUserTypeChanged() {
-            if(document.getElementById('user').checked) {
-                document.getElementById('user_id').disabled = false;
-            } else if(document.getElementById('admin').checked) {
-                document.getElementById('user_id').disabled = true;
-            }
-        }
-    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
     <h3>Alternatively, you can enter the URL parameters manually.</h3>
     <p style="color:whitesmoke; margin-left: 20px">
@@ -41,28 +42,8 @@
         "?user_type=user&user_id=?" and replace the "?" with a number greater than 0.
     </p>
 
-    <script>
-        // Redirect to appropriate view based on user_type and user_id values on this page.
-        function buttonRedirect(){
-            if(document.getElementById('admin').checked){
-                window.location.href = "admin.html";
-            } else if(document.getElementById('user').checked){
-                window.location.href = "user.html?user_id=" + document.getElementById('user_id').getAttribute('value');
-            }
-        }
-
-        // Redirect in the case of manually entered URL parameters.
-        function parameterRedirect(){
-            let params = new URLSearchParams(document.location.search);
-            
-            if(params.get("user_type") === "admin"){
-                window.location.href = "admin.html";
-            } else if(params.get("user_type") === "user"){
-                window.location.href = "user.html?user_id=" + params.get("user_id");
-            }
-        }
-        parameterRedirect();
-    </script>
+    <script src="./scripts/index.js"></script>
+    <script>parameterRedirect()</script>
     
 </body>
 </html>
